@@ -1,0 +1,235 @@
+/* variables*/
+:root{
+  --primary: #ddd;
+  --dark: #333;
+  --light: #fff;
+  --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+/*en el elemento padre de declara el tamaño que abarca (box-sizing) a border box
+de esta forma se establece que los hijos no sobrepasaran el tamaño del
+padre, tambien se declara la fuente de la pagina y su color*/
+html {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--dark);
+}
+/*en el body se declara el color de fondo de la pagina y un margen
+que separa el contenido de este, del predeterminado por el html,
+con line height se crea una separacion de 1.6rem de todos los parrafos
+ y textos del documento*/
+body{
+    background: #ccc;
+    margin: 30px 50px;
+    line-height: 1.4;
+}
+/*se estiliza los botones de la pagina*/
+.btn{
+    background-color: var(--dark);
+    color: var(--light);
+    padding: 0.6rem 1.3rem;
+    text-decoration: none;
+    border: 0;
+}
+/*con esto se establece que las imagenes ocupen el ancho completo de sus
+contenedores*/
+img{
+    max-width: 100%;
+
+}
+
+/*este en el contenedor principal de la pagina, define la separacion entre 
+los contenedores*/
+.wrapper {
+    display: grid;
+    grid-gap: 20px;
+}
+/*navigation*/
+/*se estiliza la navbar y se despiega con un grid que estable 4 columnas 
+donde cada una ocupa la misma cantidad de espacio disponible (una fraccion
+de 4)*/
+.main-nav ul{
+    display: grid;
+    grid-gap: 20px;
+    padding: 0;
+    list-style: none;
+    grid-template-columns: repeat(4,1fr);
+}
+/*se estiliza los links de la navbar, con display:block cada a se convierte 
+en su propio bloque */
+.main-nav a{
+    background: var(--primary);
+    display: block;
+    text-decoration: none;
+    padding: 0.8rem;
+    text-align: center;
+    color: var(--dark);
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow);
+
+}
+.main-nav a:hover{
+    background: var(--dark);
+    color: var(--light);
+}
+
+/* top conteiner*/
+/*aqui se define el layout de la pagina, especificamente el posicionamiento
+de los contenedores showcase y top-box, usando grid-tempalte-areas,
+y dandole a cada contenedor su respectiva id se establecen las columnas(3)
+y las filas(2) que ocuparan los contenedores*/
+.top-container{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas: 
+    'showcase showcase top-box-a'
+    'showcase showcase top-box-b';
+}
+
+/*showcase*/
+/*aqui se estiliza el contenedor showcase, se introduce una imagen de fondo
+solo para este contenedor se centra y dentro de ella se delacara y se arregla 
+como un contenedor flexbox el contenido de marcado*/
+.showcase {
+    grid-area: showcase;
+    min-height: 400px;
+    background: url(https://image.ibb.co/kYJK8x/showcase.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    box-shadow: var(--shadow);
+}
+/*see stiliza el contenido de marcado del contenedor showcase y se juntan
+un poco quitando el margen entre los elementos*/
+.showcase h1{
+    font-size: 4rem;
+    margin-bottom: 0;
+    color: var(--light);
+}
+
+.showcase p {
+    font-size: 1.3rem;
+    margin-top: 0;
+    color: var(--light);
+}
+
+/*top box*/
+/*se estiliza los elementos top box, se centra su contenido con grid y
+place-items, y se pone una separacion de 1.5rem entre el contenido y el bor-
+de del contenedor*/
+.top-box{
+    background: var(--primary);
+    display: grid;
+    place-items: center;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+}
+.top-box .price {
+    font-size: 2.5rem;
+}
+
+.top-box-a{
+    grid-area: top-box-a;
+}
+.top-box-b{
+    grid-area: top-box-b;
+}
+
+/*boxes*/
+/*se declara que el contenedor boxes sea un grid con una separacion de
+20px entre su contenido y que tenga la cantidad necesaria de columnas
+con la funcion auto-fit el navegador se encarga de que nunca se exceda
+el espacio disponible y con minmax() se hace responsivo*/
+.boxes {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit,minmax(240px, 1fr));
+}
+/*se estiliza el contenido del contenedor box*/
+.box{
+    background: var(--primary);
+    text-align: center;
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow);
+}
+/*info*/
+/*se estable el contendor como grid, se estable la separacion y se declaran
+dos columnas una contiene la foto, otra el parrafo cada uno ocupara siempre
+una fraccion dele spacio disponible*/
+.info{
+    background: var(--primary);
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 1fr 1fr;
+    padding: 3rem;
+}
+/*este contenedor de imagenes se define como un grid que tenga la cantidad necesaria de columnas
+con la funcion auto-fit el navegador se encarga de que nunca se exceda
+el espacio disponible y con minmax() se hace responsivo*/
+.portfolio{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit,minmax(240px, 1fr));
+}
+/*las imagnes que esten en el contenedor portafolio tendra la anchura completa
+disponible de en sus contenedores*/
+.portfolio img{
+    width: 100%;
+    box-shadow: var(--shadow);
+}
+/*se estiliza el pie de pagina*/
+footer{
+    margin-top: 2rem;
+    background: var(--dark);
+    color: var(--light);
+    text-align: center;
+    padding: 1rem;
+}
+
+/*media*/
+/*cuando la pantalla alcance los 700px*/
+@media (max-width:700px){
+    /*el grid pasara de 3 columnas a 2 en otro orden*/
+    .top-container {
+        grid-template-areas: 
+        'showcase showcase'
+        'top-box-a top-box-b'
+        ;
+    }
+    /*cambiara la fuente del h1*/
+    .showcase h1{
+        font-size: 2.5rem;
+    }
+    /*cada elemento de la navbar ocupara su propia fila*/
+    .main-nav ul{
+        grid-template-columns: 1fr;
+    }
+    /*cada elemento del contenedor info ocupara su propia fila*/
+    .info{
+        grid-template-columns: 1fr;
+    }
+    /*los botones y el contenido de .info, se vuelven 
+    su propio bloque y si contenido se centra*/
+    .info .btn {
+        display: block;
+        text-align: center;
+        margin:auto;
+    }
+}
+
+/*se re ordena el grid*/
+@media (max-width:500px){
+    .top-container {
+        grid-template-areas: 
+        'showcase '
+        'top-box-a '
+        'top-box-b'
+        ;
+    }
+}
